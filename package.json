@@ -1,0 +1,33 @@
+{
+  "name": "dsh-authless",
+  "version": "0.1.0",
+  "description": "Serve the local DSH Web UI without the launch-token gate; the Host/Origin fence stays.",
+  "type": "module",
+  "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js"
+  },
+  "files": [
+    "src/index.js",
+    "cordis.patch.yml",
+    "dsh-plugin.json",
+    "README.md",
+    "README_ZH.md",
+    "LICENSE",
+    "docs/design.md",
+    "docs/design_ZH.md"
+  ],
+  "license": "MIT",
+  "engines": {
+    "dsh": ">=0.2.1-rc.2 <0.3.0",
+    "node": "^22.19 || >=24"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "scripts": {
+    "test": "node scripts/verify.mjs"
+  }
+}

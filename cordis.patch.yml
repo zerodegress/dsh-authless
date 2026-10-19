@@ -1,0 +1,14 @@
+# dsh-authless bundle patch (target: dsh 0.2.1-rc.2)
+#
+# Layer order (later wins): bundles -> profile cordis.patch.yml -> $DSH_HOME
+# patch -> --patch. This file is the bundle layer, so a user overlay can still
+# override the row below.
+#
+# The patch does one thing: activate the host half (src/index.js), which swaps
+# the connection service's browser-auth owner. It does not disable, rename or
+# reconfigure any row of the host's own bundles — no `web-startup`, no
+# `web-runtime`, no `webserver` — so an upstream upgrade cannot collide with it.
+
+- insert:
+    - id: authless
+      name: dsh-authless
