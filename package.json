@@ -1,7 +1,25 @@
 {
   "name": "dsh-authless",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Serve the local DSH Web UI without the launch-token gate; the Host/Origin fence stays.",
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "dsh-bundle",
+    "web",
+    "auth",
+    "token",
+    "local-development"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zerodegress/dsh-authless.git"
+  },
+  "homepage": "https://github.com/zerodegress/dsh-authless#readme",
+  "bugs": {
+    "url": "https://github.com/zerodegress/dsh-authless/issues"
+  },
+  "author": "zerodegress",
   "type": "module",
   "main": "src/index.js",
   "exports": {
@@ -15,7 +33,8 @@
     "README_ZH.md",
     "LICENSE",
     "docs/design.md",
-    "docs/design_ZH.md"
+    "docs/design_ZH.md",
+    "CHANGELOG.md"
   ],
   "license": "MIT",
   "engines": {
@@ -28,6 +47,10 @@
     }
   },
   "scripts": {
-    "test": "node scripts/verify.mjs"
+    "test": "node scripts/verify.mjs",
+    "prepublishOnly": "npm test"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
