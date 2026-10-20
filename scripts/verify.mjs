@@ -165,6 +165,23 @@ await check('⑦ 声明闸门：包的接线与 patch 形状', () => {
     assert.doesNotMatch(text, /(^|[^\w])\/(home|Users)\/[\w.-]+/, `${file} contains an absolute local path`)
     assert.doesNotMatch(text, /zice\.top/i, `${file} contains a private domain`)
   }
+
+  // npm reads these at publish time; a missing or stale one ships a package that
+  // points readers at the wrong repository.
+  const manifest = JSON.parse(fs.readFileSync(path.join(root, 'dsh-plugin.json'), 'utf8'))
+  assert.equal(pkg.version, manifest.version, `package.json version ${pkg.version} != dsh-plugin.json version ${manifest.version}`)
+  assert.equal(pkg.repository?.url, 'git+https://github.com/zerodegress/dsh-authless.git')
+  assert.equal(pkg.homepage, 'https://github.com/zerodegress/dsh-authless#readme')
+  assert.equal(pkg.bugs?.url, 'https://github.com/zerodegress/dsh-authless/issues')
+  assert.equal(pkg.author, 'zerodegress')
+  assert.equal(pkg.publishConfig?.access, 'public')
+  assert.equal(pkg.scripts?.prepublishOnly, 'npm test', 'publishing must run the suite first')
+  assert.ok((pkg.keywords ?? []).length > 0, 'no keywords, so the package is not findable')
+  assert.ok(fs.existsSync(path.join(root, 'CHANGELOG.md')), 'a published version needs a CHANGELOG entry')
+  const changelog = fs.readFileSync(path.join(root, 'CHANGELOG.md'), 'utf8')
+  assert.ok(changelog.includes(pkg.version), `CHANGELOG.md has no section for ${pkg.version}`)
+  // The suite itself stays out of the tarball: it is a dev tool, not a payload.
+  assert.ok(!(pkg.files ?? []).some((entry) => entry.startsWith('scripts/')), 'the test suite must not be published')
 })
 
 await check('⑨ 插件声明：id 是反写域名，且能过宿主的 parser', async () => {

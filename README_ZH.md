@@ -9,6 +9,8 @@ WebSocket 升级走同一条路。
 
 ## 安装
 
+npm 上的包名就是 `dsh-authless`，要求 dsh 0.2.1-rc.2 起。
+
 ```sh
 dsh plugin --profile web add dsh-authless
 dsh --profile web
