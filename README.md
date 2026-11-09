@@ -10,7 +10,7 @@ this plugin is a downgrade. Read [Known limitations](#known-limitations) first.
 
 ## Install
 
-Published on npm as `dsh-authless`. It needs dsh 0.2.1-rc.2 or newer.
+Published on npm as `dsh-authless`. It needs dsh 0.2.1-rc.2 or newer; 0.2.2-rc.1 is checked as well.
 
 ```sh
 dsh plugin --profile web add dsh-authless

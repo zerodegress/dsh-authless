@@ -1,6 +1,6 @@
 {
   "name": "dsh-authless",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Serve the local DSH Web UI without the launch-token gate; the Host/Origin fence stays.",
   "keywords": [
     "dsh",
@@ -38,7 +38,7 @@
   ],
   "license": "MIT",
   "engines": {
-    "dsh": ">=0.2.1-rc.2 <0.3.0",
+    "dsh": ">=0.2.1-rc.2 <0.3.0 || >=0.2.2-rc.1 <0.3.0",
     "node": "^22.19 || >=24"
   },
   "dsh": {

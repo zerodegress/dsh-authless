@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.1.2
+
+- Accept dsh 0.2.2-rc.1. The declared range `>=0.2.1-rc.2 <0.3.0` rejects a
+  prerelease of a later patch by semver's own rule, so a host on 0.2.2-rc.1
+  refused to load the plugin. The range now also carries `>=0.2.2-rc.1 <0.3.0`.
+- No behavioural change: `@deepseek-ai/dsh-client-connection` is byte-identical
+  between 0.2.1-rc.5 and 0.2.2-rc.1, so the owner this plugin swaps is still the
+  one the host calls.
+
 ## 0.1.1
 
 - Adds the package metadata npm needs: `repository`, `homepage`, `bugs`, `keywords`, `author`
